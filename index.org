@@ -1,0 +1,37 @@
+#+TITLE: formula-flatten
+
+A function to flatten nested data.
+
+#+BEGIN_SRC sh :exports none
+  babel FLATTEN.js -m umd --out-file index.js
+#+END_SRC
+
+#+RESULTS:
+
+#+BEGIN_SRC js :tangle FLATTEN.js
+  export default function FLATTEN(array){
+      var a = array;
+      if (a.constructor.name === "range") {
+          var a = a.values();
+      }
+      
+      var r = [];
+      
+      function _flatten(a) {    
+          for(var i=0; i<a.length; i++){
+              if (typeof a[i] === "undefined" || a[i] === null) {
+                  continue; // empty cell or variable...just keep rolling
+              } else if(a[i].constructor.name === "range") {
+                  _flatten(a[i].values());
+              } else if(a[i].constructor == Array) {
+                  _flatten(a[i]);
+              } else {
+                  r.push(a[i]);
+              }
+          }
+          return r;
+      }
+
+      return _flatten(a);
+  }
+#+END_SRC
