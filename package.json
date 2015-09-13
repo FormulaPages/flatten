@@ -1,6 +1,6 @@
 {
   "name": "formula-flatten",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A utility function to flatten nested data.",
   "main": "index.js",
   "scripts": {
@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/FormulaPages/flatten/issues"
   },
-  "homepage": "https://github.com/FormulaPages/flatten#readme"
+  "homepage": "https://github.com/FormulaPages/flatten#readme",
+  "dependencies": {
+    "formula-isarray": "^1.0.0"
+  }
 }
